@@ -6,7 +6,7 @@ import os
 # load_dotenv()
 
 
-# MONGO_URI = "mongodb+srv://shaivamuthaiya:Klide1234@cluster0.xbiritm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+
 MONGO_URI = os.getenv('MONGO_URI')
 
 client = MongoClient(MONGO_URI, server_api=ServerApi('1'))
