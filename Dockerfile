@@ -11,6 +11,7 @@ WORKDIR /app
 
 # Copy the current directory contents into the container at /app
 COPY . /app
+RUN mkdir -p /app/reports
 
 
 RUN pip install --upgrade pip --index-url=https://pypi.org/simple --timeout=100
