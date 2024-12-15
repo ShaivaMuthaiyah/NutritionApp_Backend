@@ -12,6 +12,7 @@ WORKDIR /app
 # Copy the current directory contents into the container at /app
 COPY . /app
 
+
 RUN pip install --upgrade pip --index-url=https://pypi.org/simple --timeout=100
 
 # Install any needed packages specified in requirements.txt
@@ -21,6 +22,17 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 ARG MONGO_URI
 ENV MONGO_URI=$MONGO_URI
+
+ARG BUCKET_NAME
+ENV BUCKET_NAME=$BUCKET_NAME
+ARG REGION
+ENV REGION=$REGION
+ARG BUCKET_URL
+ENV BUCKET_URL=$BUCKET_URL
+ARG AWS_ACCESS_KEY
+ENV AWS_ACCESS_KEY=$AWS_ACCESS_KEY
+ARG AWS_SECRET_KEY
+ENV AWS_SECRET_KEY=$AWS_SECRET_KEY
 
 # Expose the port the Flask app runs on
 EXPOSE 5000
