@@ -31,7 +31,7 @@ scheduler = APScheduler()
 report_list = []
 
 
-@scheduler.task('interval', id='cleanup_reports', minutes=10)
+@scheduler.task('interval', id='cleanup_reports', minutes=20)
 def cleanupFiles():
     if len(report_list) > 0:
         for each_item in report_list:
