@@ -39,10 +39,6 @@
                         <h3 class="form-title text-center mb-4">Blog Submission Form</h3>
                         <form id="blogForm" enctype="multipart/form-data">
                             <div class="mb-3">
-                                <label for="avatarInitial" class="form-label">Avatar Initial</label>
-                                <input type="text" class="form-control" id="avatarInitial" name="avatarInitial" placeholder="Enter avatar initial" required>
-                            </div>
-                            <div class="mb-3">
                                 <label for="title" class="form-label">Title</label>
                                 <input type="text" class="form-control" id="title" name="title" placeholder="Enter blog title" required>
                             </div>
@@ -51,12 +47,25 @@
                                 <textarea class="form-control" id="description" name="description" placeholder="Enter a brief description" required></textarea>
                             </div>
                             <div class="mb-3">
-                                <label for="tags" class="form-label">Tags (comma-separated)</label>
-                                <input type="text" class="form-control" id="tags" name="tags" placeholder="Enter tags" required>
+                                <label for="category" class="form-label">Categoy</label>
+                                <select class="form-control" id="category" name="category" required>
+                                    <option value="" disabled selected>Select your blog content</option>
+                                    <option value="General Health">General Health Advice</option>
+                                    <option value="Recipe">Recipe</option>
+                                    <option value="Medical Advice">Medical Advice</option>
+                                </select>
                             </div>
                             <div class="mb-3">
                                 <label for="content" class="form-label">Content</label>
                                 <textarea class="form-control" id="content" name="content" rows="6" placeholder="Write your blog content here" required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="author" class="form-label">Author Name</label>
+                                <textarea class="form-control" id="author" name="author" rows="2" placeholder="Write the contributors name" required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="role" class="form-label">Author's Designation</label>
+                                <textarea class="form-control" id="role" name="role" rows="2" placeholder="Write the contributors role/designation" required></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="file" class="form-label">Upload Image</label>
@@ -79,10 +88,11 @@
             event.preventDefault();
             
             const formData = new FormData();
-            formData.append('avatarInitial', document.getElementById('avatarInitial').value);
             formData.append('title', document.getElementById('title').value);
             formData.append('description', document.getElementById('description').value);
-            formData.append('tags', document.getElementById('tags').value);
+            formData.append('category', document.getElementById('category').value);
+            formData.append('author', document.getElementById('author').value);
+            formData.append('role', document.getElementById('role').value);
             formData.append('content', document.getElementById('content').value);
             formData.append('file', document.getElementById('file').files[0]);
 
