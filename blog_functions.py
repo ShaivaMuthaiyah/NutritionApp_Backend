@@ -80,7 +80,7 @@ def create_blog_json(data, img_url):
 
     # input data is in json form so getting values from keys as dictionary
     blog_data = {
-        "avatarInitial": data['avatarInitial'],
+        "id": data['id'],
         "title": data['title'],
         "date": datetime.now().strftime("%Y-%m-%d"),
         "imgSrc": img_url,
@@ -131,12 +131,13 @@ def get_blogs():
                     blogs.append({
                         'id': blog_key,
                         'title': blog_data.get('title'),
-                        'href': blog_data.get('href'),
+                        'imageSrc': blog_data.get('imageSrc'),
                         'description': blog_data.get('description'),
                         'date': blog_data.get('date'),
                         'datetime': blog_data.get('datetime'),
                         'category': blog_data.get('category'),
                         'author': blog_data.get('author'),
+                        'role': blog_data.get('role'),
                     })
         
         # return an array of blogs to display
