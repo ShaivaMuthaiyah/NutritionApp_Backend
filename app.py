@@ -60,14 +60,14 @@ def blogs_route():
 
 
 # Route to get a specific blog by title
-@app.route('/api/blogs/<path:BlogId>', methods=['GET'])
-def get_blog_by_BlogId(BlogId):
+@app.route('/api/blogs/<path:blogId>', methods=['GET'])
+def get_blog_by_BlogId(blogId):
 
 
-    app.logger.info(f"Received title: {BlogId}") 
+    app.logger.info(f"Received title: {blogId}") 
     # print(f"Decoded title: {decoded_title}")
     blogs = get_blogs()  # Retrieve the list of blogs from S3 or wherever stored
-    blog = next((b for b in blogs if b['BlogId'] == BlogId), None)
+    blog = next((b for b in blogs if b['blogId'] == blogId), None)
 
     if blog:
         return jsonify(blog)

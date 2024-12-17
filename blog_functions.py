@@ -130,7 +130,7 @@ def get_blogs():
 
                     # Append relevant details to the blogs list
                     blogs.append({
-                        'BlogId': blog_data.get('BlogId'),
+                        'blogId': blog_data.get('blogId'),
                         'title': blog_data.get('title'),
                         'imageSrc': blog_data.get('imageSrc'),
                         'description': blog_data.get('description'),
