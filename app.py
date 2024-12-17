@@ -60,15 +60,14 @@ def blogs_route():
 
 
 # Route to get a specific blog by title
-@app.route('/api/blogs/title/<path:title>', methods=['GET'])
-def get_blog_by_title(title):
+@app.route('/api/blogs/<path:BlogId>', methods=['GET'])
+def get_blog_by_BlogId(BlogId):
 
-    decoded_title = unquote(title)
 
-    app.logger.info(f"Received title: {title}") 
-    print(f"Decoded title: {decoded_title}")
+    app.logger.info(f"Received title: {BlogId}") 
+    # print(f"Decoded title: {decoded_title}")
     blogs = get_blogs()  # Retrieve the list of blogs from S3 or wherever stored
-    blog = next((b for b in blogs if b['title'] == decoded_title), None)
+    blog = next((b for b in blogs if b['BlogId'] == BlogId), None)
 
     if blog:
         return jsonify(blog)
@@ -166,12 +165,14 @@ def create_blog():
 
     file = request.files['file']
     blog_data = {
-        "avatarInitial": request.form['avatarInitial'],
+        "category": request.form['category'],
         "title": request.form['title'],
         "description": request.form['description'],
-        "tags": request.form.getlist('tags'),
+        "author": request.form('author'),
+        "role": request.form('role'),
         "content": request.form['content']
     }
+
 
     img_url = upload_image_to_s3(file, blog_data['title'])
     if not img_url:
