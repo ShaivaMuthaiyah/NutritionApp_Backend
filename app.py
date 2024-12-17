@@ -168,8 +168,8 @@ def create_blog():
         "category": request.form['category'],
         "title": request.form['title'],
         "description": request.form['description'],
-        "author": request.form('author'),
-        "role": request.form('role'),
+        "author": request.form['author'],
+        "role": request.form['role'],
         "content": request.form['content']
     }
 
