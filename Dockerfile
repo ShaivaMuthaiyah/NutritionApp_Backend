@@ -20,16 +20,23 @@ RUN pip install --upgrade pip --index-url=https://pypi.org/simple --timeout=100
 RUN pip install --no-cache-dir -r requirements.txt
 
 
-
+# atlas URI to connect
 ARG MONGO_URI
 ENV MONGO_URI=$MONGO_URI
 
+# the name of the bucket being connected to
 ARG BUCKET_NAME
 ENV BUCKET_NAME=$BUCKET_NAME
+
+# the default region set up for the project
 ARG REGION
 ENV REGION=$REGION
+
+# url of 3 bucket
 ARG BUCKET_URL
 ENV BUCKET_URL=$BUCKET_URL
+
+# aws credentials
 ARG AWS_ACCESS_KEY
 ENV AWS_ACCESS_KEY=$AWS_ACCESS_KEY
 ARG AWS_SECRET_KEY
