@@ -6,7 +6,7 @@ from pymongo.errors import ConnectionFailure
 from pymongo import MongoClient
 from mongodb_functions import mealCalculator
 from nutritional_calculations import calculate_nutrition
-from blog_functions import get_blogs, upload_image_to_s3, create_blog_json, update_blog_json
+from blog_functions import get_blogs, upload_image_to_s3, create_blog_json, update_blog_json, generate_blog_id
 from health_report import generateHealthReport, cleanupActivity, cleanupActivityFolder
 from urllib.parse import unquote
 import logging
@@ -75,13 +75,13 @@ def get_blog_by_BlogId(blogId):
         return jsonify({'error': 'Blog not found'}), 404
 
 
-@app.route('/create_blog_form')
+@app.route('/api/create_blog_form')
 def create_blog_form():
     return render_template('createblog.html') 
 
 
 
-@app.route('/edit_blog_form')
+@app.route('/api/edit_blog_form')
 def edit_blog_form():
     return render_template('editblog.html')  
 
@@ -164,17 +164,19 @@ def create_blog():
         return jsonify({'error': 'Image file and blog title are required'}), 400
 
     file = request.files['file']
+    blogId = generate_blog_id()
     blog_data = {
         "category": request.form['category'],
         "title": request.form['title'],
         "description": request.form['description'],
         "author": request.form['author'],
         "role": request.form['role'],
-        "content": request.form['content']
+        "content": request.form['content'],
+        "blogId": blogId
     }
 
 
-    img_url = upload_image_to_s3(file, blog_data['title'])
+    img_url = upload_image_to_s3(file, blog_data['blogId'])
     if not img_url:
         return jsonify({'error': 'Failed to upload image'}), 500
 
@@ -187,7 +189,7 @@ def create_blog():
 
 
 # Define the route for user input
-@app.route('/calculate', methods=['GET', 'HEAD', 'POST', 'PUT', 'DELETE'])
+@app.route('/api/calculate', methods=['GET', 'HEAD', 'POST', 'PUT'])
 def calculate():
 
     id = uuid.uuid1()
@@ -235,6 +237,13 @@ MONGO_URI = os.getenv('MONGO_URI')
 
 # Initialize MongoDB client
 client = MongoClient(MONGO_URI, server_api=ServerApi('1'))
+
+
+# Health check for Ingress
+# @app.route('/api/healthz', methods=['GET'])
+# def ingressHealthCheck():
+#     return jsonify({"status": "OK"}), 200
+
 
 # Liveness Probe - Checks if the app is running
 @app.route('/healthz', methods=['GET'])

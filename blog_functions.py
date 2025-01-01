@@ -30,13 +30,10 @@ def generate_blog_id():
     return random.randint(10000, 99999)
 
 
-def upload_image_to_s3(file, blog_title):
-
-    # secure file name for removing spaces
-    filename = secure_filename(blog_title) + os.path.splitext(file.filename)[1]
+def upload_image_to_s3(file, blogId):
 
     # name fo the folder is /images creating path with the folde name
-    file_path = f'images/{filename}'
+    file_path = f'images/{blogId}'
 
     try:
         # upload into the specific bucket in the path and with the new file name
@@ -88,13 +85,13 @@ def create_blog_json(data, img_url):
         "role": data['role'],
         "content": data['content'],
         "category": data['category'],
-        "blogId": generate_blog_id()
+        "blogId": data['blogId']
     }
 
     # convert the dictionary into json file
     blog_json = json.dumps(blog_data, indent=4)
     # create secure name from the title and add the json extension
-    filename = secure_filename(data['title']) + ".json"
+    filename = data['blogId'] + ".json"
     # path of the json inside the blogs folder inside the bucket
     json_path = f'blogs/{filename}'
 
