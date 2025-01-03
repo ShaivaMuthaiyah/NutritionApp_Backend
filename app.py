@@ -132,7 +132,7 @@ def update_blog():
         'description': request.form.get('description', blog['description']),
         'tags': request.form.get('tags', blog['tags']).split(','),  # Convert tags to list
         'content': request.form.get('content', blog['content']),
-        'imgSrc': new_img_src
+        # 'imgSrc': f"{BUCKET_URL}images/{blogId}"
     }
 
     # Update the blog in the JSON file
@@ -172,7 +172,8 @@ def create_blog():
         "author": request.form['author'],
         "role": request.form['role'],
         "content": request.form['content'],
-        "blogId": blogId
+        "blogId": blogId,
+        'imgSrc': f"{BUCKET_URL}images/{blogId}"
     }
 
 
@@ -180,7 +181,7 @@ def create_blog():
     if not img_url:
         return jsonify({'error': 'Failed to upload image'}), 500
 
-    result = create_blog_json(blog_data, img_url)
+    result = create_blog_json(blog_data, blog_data['imgSrc'])
     if result:
         return jsonify(result), 201
     else:
