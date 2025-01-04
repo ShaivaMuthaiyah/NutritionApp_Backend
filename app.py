@@ -78,7 +78,7 @@ def get_blog_by_BlogId(blogId):
 
 @app.route('/api/create_blog_form')
 def create_blog_form():
-    return render_template('createblog.html') 
+    return render_template('createblog.html', API_URL=REACT_APP_API_URL) 
 
 
 
