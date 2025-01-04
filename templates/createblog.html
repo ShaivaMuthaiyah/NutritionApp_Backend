@@ -87,7 +87,7 @@
         document.getElementById('blogForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
-            const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
+            const API_URL = process.env.REACT_APP_API_URL || "http://flask-backend.nutrition.svc.cluster.local:5000/api";
             
             const formData = new FormData();
             formData.append('title', document.getElementById('title').value);
