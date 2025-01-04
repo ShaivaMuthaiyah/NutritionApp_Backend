@@ -18,6 +18,7 @@ import os
 
 
 BUCKET_URL = os.getenv('BUCKET_URL')
+REACT_APP_API_URL = os.getenv('REACT_APP_API_URL')
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})

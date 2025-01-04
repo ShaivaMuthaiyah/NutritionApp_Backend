@@ -86,6 +86,8 @@
     <script>
         document.getElementById('blogForm').addEventListener('submit', function(event) {
             event.preventDefault();
+
+            const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
             
             const formData = new FormData();
             formData.append('title', document.getElementById('title').value);
@@ -96,7 +98,7 @@
             formData.append('content', document.getElementById('content').value);
             formData.append('file', document.getElementById('file').files[0]);
 
-            fetch('http://flask-backend.nutrition.svc.cluster.local:5000/api/create_blog', {
+            fetch(`${API_URL}/create_blog`, {
                 method: 'POST',
                 body: formData,
             })
