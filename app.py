@@ -8,7 +8,6 @@ from mongodb_functions import mealCalculator
 from nutritional_calculations import calculate_nutrition
 from blog_functions import get_blogs, upload_image_to_s3, create_blog_json, update_blog_json, generate_blog_id
 from health_report import generateHealthReport, cleanupActivity, cleanupActivityFolder
-from urllib.parse import unquote
 import logging
 import uuid
 import os

@@ -200,7 +200,7 @@ def mealCalculator(data):
     # Categorize the allergens
     allergen_dictionary = {
 
-        "shellfish": ["Clam", "Lobster", "Shrimp", "Prawns", "Calamari", "Camarones", "Prawn", "Seafood", "Scallion", "scallions"],
+        "shellfish": ["Clam", "Lobster", "Shrimp", "Prawns", "Calamari", "Camarones", "Prawn", "Seafood", "Scallion", "scallions", "scallops"],
         "fish" : ["Trout", "Sole", "Tilapia", "Cod", "Swordfish", "Snapper", "Halibut", "Tuna", "Salmon", "Fish"],
         "chicken": ["Chicken", "Poultry", "Turkey", "eggs", "Egg", "Hens", "Wings"],
         "beef": ["Ham", "Beef", "Venison", "Steak", "Steaks", "Chops", "Ribs", "Rib", "Steak"],
