@@ -203,7 +203,7 @@ def mealCalculator(data):
         "shellfish": ["Clam", "Lobster", "Shrimp", "Prawns", "Calamari", "Camarones", "Prawn", "Seafood", "Scallion", "scallions", "scallops"],
         "fish" : ["Trout", "Sole", "Tilapia", "Cod", "Swordfish", "Snapper", "Halibut", "Tuna", "Salmon", "Fish"],
         "chicken": ["Chicken", "Poultry", "Turkey", "eggs", "Egg", "Hens", "Wings"],
-        "beef": ["Ham", "Beef", "Venison", "Steak", "Steaks", "Chops", "Ribs", "Rib", "Steak"],
+        "beef": ["Ham", "Beef", "Venison", "Steak", "Steaks", "Chops", "Ribs", "Rib", "Steak", "sirloin", "Sirloin"],
         "pork": ["Pork", "Ham", "Hamburger"],
         "none": ["@@@@"]
     }
