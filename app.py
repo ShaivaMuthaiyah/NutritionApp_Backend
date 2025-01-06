@@ -43,7 +43,7 @@ def cleanupFiles():
         cleanupActivityFolder()
 
 
-@app.route('/',  methods=['GET'])
+@app.route('/',  methods=['*'])
 def home():
     return render_template('index.html')
 
