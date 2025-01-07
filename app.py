@@ -164,7 +164,7 @@ def create_blog():
         return jsonify({'error': 'Image file and blog title are required'}), 400
 
     file = request.files['file']
-    blogId = generate_blog_id()
+    blogId = str(generate_blog_id())
     blog_data = {
         "category": request.form['category'],
         "title": request.form['title'],
