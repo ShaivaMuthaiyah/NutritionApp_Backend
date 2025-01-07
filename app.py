@@ -190,7 +190,7 @@ def create_blog():
 
 
 # Define the route for user input
-@app.route('/api/calculate', methods=['GET', 'HEAD', 'POST', 'PUT', 'OPTIONS'])
+@app.route('/api/calculate', methods=['GET', 'HEAD', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'])
 def calculate():
 
     id = uuid.uuid1()
