@@ -91,7 +91,7 @@ def create_blog_json(data, img_url):
     # convert the dictionary into json file
     blog_json = json.dumps(blog_data, indent=4)
     # create secure name from the title and add the json extension
-    filename = data['blogId'] + ".json"
+    filename = str(data['blogId']) + ".json"
     # path of the json inside the blogs folder inside the bucket
     json_path = f'blogs/{filename}'
 
