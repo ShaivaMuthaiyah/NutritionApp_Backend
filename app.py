@@ -86,7 +86,7 @@ def edit_blog_form():
     return render_template('editblog.html')  
 
 
-@app.route('/api/update_blog', methods=['PUT'])
+@app.route('/api/update_blog', methods=['PUT', 'GET'])
 def update_blog():
     if 'title' not in request.form:
         return jsonify({'error': 'Title is required'}), 400
@@ -99,8 +99,6 @@ def update_blog():
     if not blog:
         return jsonify({'error': 'Blog not found'}), 404
 
-    # Prepare a clean image name based on the title
-    blog_title = title.replace(" ", "_")  # Replace spaces with underscores for the image name
 
     # Default to the current image path or new image path
     new_img_src = ""
@@ -110,11 +108,8 @@ def update_blog():
         file = request.files['file']
         print(file)
 
-        # Extract the file extension of the uploaded file
-        # file_ext = os.path.splitext(file.filename)[1]  # Gets the file extension (e.g., '.jpg', '.png')
-
         # Set the new image name using the blog title and the extracted extension
-        new_image_name = blog_title
+        new_image_name = str(blog['blogId'])
         print(new_image_name)
 
         # Upload the new image to S3 with the title as the name
@@ -124,15 +119,18 @@ def update_blog():
         # Update the image source URL to the new S3 URL
         new_img_src = img_url  # Full URL with bucket details
     else:
-        new_img_src = blog.get('imgSrc', BUCKET_URL + "images/" + blog_title + ".jpg")
+        new_img_src = blog.get('imgSrc', BUCKET_URL + "images/" + str(blog['blogId']) + ".jpg")
 
     # Construct blog data for updating, using form data for non-file fields
     blog_data = {
-        'title': title,
-        'description': request.form.get('description', blog['description']),
-        'tags': request.form.get('tags', blog['tags']).split(','),  # Convert tags to list
-        'content': request.form.get('content', blog['content']),
-        # 'imgSrc': f"{BUCKET_URL}images/{blogId}"
+        "category": request.form['category'],
+        "title": request.form['title'],
+        "description": request.form['description'],
+        "author": request.form['author'],
+        "role": request.form['role'],
+        "content": request.form['content'],
+        "blogId": blog['blogId'],
+        'imgSrc': f"{BUCKET_URL}images/{blog['blogId']}"
     }
 
     # Update the blog in the JSON file
