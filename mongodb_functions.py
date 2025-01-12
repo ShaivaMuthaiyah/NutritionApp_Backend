@@ -200,11 +200,54 @@ def mealCalculator(data):
     # Categorize the allergens
     allergen_dictionary = {
 
-        "shellfish": ["Clam", "Lobster", "Shrimp", "Prawns", "Calamari", "Camarones", "Prawn", "Seafood", "Scallion", "scallions", "scallops"],
-        "fish" : ["Trout", "Sole", "Tilapia", "Cod", "Swordfish", "Snapper", "Halibut", "Tuna", "Salmon", "Fish"],
-        "chicken": ["Chicken", "Poultry", "Turkey", "eggs", "Egg", "Hens", "Wings"],
-        "beef": ["Ham", "Beef", "Venison", "Steak", "Steaks", "Chops", "Ribs", "Rib", "Steak", "sirloin", "Sirloin"],
-        "pork": ["Pork", "Ham", "Hamburger"],
+        "shellfish": [
+                    "Clam", "Clams", "Lobster", "Lobsters", "Shrimp", "Shrimps", "Prawns", 
+                    "Prawn", "Calamari", "Squid", "Camarones", "Seafood", "Scallion", 
+                    "Scallions", "Scallops", "Crab", "Crabs", "Oysters", "Mussels", 
+                    "Cockles", "Langoustines", "Barnacles", "Shellfish", "Sea Snails", 
+                    "Whelks", "Crawfish", "Crayfish"
+                    ],
+
+        "fish" : [
+                "Trout", "Sole", "Tilapia", "Cod", "Swordfish", "Snapper", 
+                "Halibut", "Tuna", "Salmon", "Fish", "Herring", "Mackerel", 
+                "Anchovy", "Anchovies", "Bass", "Sea Bass", "Carp", "Flounder", 
+                "Grouper", "Haddock", "Sardine", "Sardines", "Catfish", 
+                "Eel", "Mahi-Mahi", "Perch", "Pollock", "Roe", "Barramundi", 
+                "Bluefish", "Amberjack", "Cobia", "Shark", "Kipper"
+                ],
+
+        "chicken": [
+                "Chicken", "Chickens", "Poultry", "Turkey", "Duck", "Duckling", 
+                "Cornish Hen", "Hens", "Roaster", "Capons", "Broiler", 
+                "Foie Gras", "Quail", "Goose", "Game Fowl", "Guinea Fowl", 
+                "Drumsticks", "Thighs", "Wings", "Breast", "Tenders", "Eggs", 
+                "Egg", "Hen's Eggs", "Free Range Chicken", "Organic Poultry"
+                ],
+
+        "beef": [
+                "Ham", "Beef", "Venison", "Steak", "Steaks", "Chops", "Ribs", "Rib", 
+                "Sirloin", "Veal", "Roast", "Burgers", "Ground Beef", "Minced Meat", 
+                "Prime Rib", "Shank", "Brisket", "Flank", "Chuck", "Filet", "T-Bone", 
+                "Tenderloin", "Porterhouse", "Oxtail", "Short Rib"
+                ],
+
+        "lamb": [
+                "Veal", "Lamb", "Mutton", "Chops", "Sheep", "Goat", "Rack of Lamb", 
+                "Loin Chops", "Leg of Lamb", "Kid", 
+                "Capretto", "Cabrito", "Chevon", 
+                "Shank", "Shoulder", "Cutlets", 
+                "Ribs"
+                ],
+
+        "pork": [
+                "Pork", "Ham", "Ham Hock", "Bacon", "Sausage", 
+                "Pork Chops", "Pork Ribs", "Pork Belly", "Tenderloin", 
+                "Pulled Pork", "Ground Pork", "Canadian Bacon", 
+                "Pancetta", "Prosciutto", "Gammon", "Salami", 
+                "Chorizo", "Lardon", "Hog Roast"
+                ],
+
         "none": ["@@@@"]
     }
 
