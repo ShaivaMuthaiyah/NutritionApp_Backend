@@ -44,10 +44,7 @@
                                     <option value="" disabled selected>Select a blog to edit</option>
                                 </select>
                             </div>
-                            <div class="mb-3">
-                                <label for="avatarInitial" class="form-label">Avatar Initial</label>
-                                <input type="text" class="form-control" id="avatarInitial" name="avatarInitial" placeholder="Enter avatar initial" required>
-                            </div>
+ 
                             <div class="mb-3">
                                 <label for="title" class="form-label">Title</label>
                                 <input type="text" class="form-control" id="title" name="title" placeholder="Enter blog title" required>
@@ -57,12 +54,20 @@
                                 <textarea class="form-control" id="description" name="description" placeholder="Enter a brief description" required></textarea>
                             </div>
                             <div class="mb-3">
-                                <label for="tags" class="form-label">Tags (comma-separated)</label>
-                                <input type="text" class="form-control" id="tags" name="tags" placeholder="Enter tags" required>
+                                <label for="category" class="form-label">Category</label>
+                                <textarea class="form-control" id="category" name="category" placeholder="Enter the Category" required></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="content" class="form-label">Content</label>
                                 <textarea class="form-control" id="content" name="content" rows="6" placeholder="Write your blog content here" required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="author" class="form-label">Author</label>
+                                <textarea class="form-control" id="author" name="author" rows="6" placeholder="Who is the Author?" required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="role" class="form-label">Role</label>
+                                <textarea class="form-control" id="role" name="role" rows="6" placeholder="Role of author" required></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="file" class="form-label">Upload Image (optional)</label>
@@ -89,7 +94,7 @@
                     const blogSelect = document.getElementById('blogSelect');
                     data.forEach(blog => {
                         const option = document.createElement('option');
-                        option.value = blog.title;  // Use title as the identifier for better clarity
+                        option.value = blog.blogId;  // Blog ID as identifier
                         option.textContent = blog.title;
                         blogSelect.appendChild(option);
                     });
@@ -103,10 +108,11 @@
                     .then(response => response.json())
                     .then(blog => {
                         if (!blog.error) {
-                            document.getElementById('avatarInitial').value = blog.avatarInitial;
                             document.getElementById('title').value = blog.title;
                             document.getElementById('description').value = blog.description;
-                            document.getElementById('tags').value = blog.tags.join(', ');
+                            document.getElementById('category').value = blog.category;
+                            document.getElementById('author').value = blog.author;
+                            document.getElementById('role').value = blog.content;                    
                             document.getElementById('content').value = blog.content;
                         }
                     })
@@ -118,12 +124,13 @@
                 event.preventDefault();
                 
                 const formData = new FormData();
-                formData.append('file', document.getElementById('file').files[0]);
-                formData.append('avatarInitial', document.getElementById('avatarInitial').value);
                 formData.append('title', document.getElementById('title').value);
                 formData.append('description', document.getElementById('description').value);
-                formData.append('tags', document.getElementById('tags').value.split(',').map(tag => tag.trim())); // Process tags into an array
+                formData.append('category', document.getElementById('category').value);
+                formData.append('author', document.getElementById('author').value);
+                formData.append('role', document.getElementById('role').value);
                 formData.append('content', document.getElementById('content').value);
+                formData.append('file', document.getElementById('file').files[0]);
 
                 fetch('/api/update_blog', {
                     method: 'PUT', 
