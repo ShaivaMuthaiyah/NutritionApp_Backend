@@ -229,7 +229,7 @@ def mealCalculator(data):
                 "Ham", "Beef", "Venison", "Steak", "Steaks", "Chops", "Ribs", "Rib", 
                 "Sirloin", "Veal", "Roast", "Burgers", "Ground Beef", "Minced Meat", 
                 "Prime Rib", "Shank", "Brisket", "Flank", "Chuck", "Filet", "T-Bone", 
-                "Tenderloin", "Porterhouse", "Oxtail", "Short Rib"
+                "Tenderloin", "Porterhouse", "Oxtail", "Short Rib", "hamburger"
                 ],
 
         "lamb": [
@@ -243,7 +243,7 @@ def mealCalculator(data):
         "pork": [
                 "Pork", "Ham", "Ham Hock", "Bacon", "Sausage", 
                 "Pork Chops", "Pork Ribs", "Pork Belly", "Tenderloin", 
-                "Pulled Pork", "Ground Pork", "Canadian Bacon", 
+                "Pulled Pork", "Ground Pork", "Canadian Bacon", "hamburger",
                 "Pancetta", "Prosciutto", "Gammon", "Salami", 
                 "Chorizo", "Lardon", "Hog Roast"
                 ],
