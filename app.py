@@ -11,9 +11,6 @@ from health_report import generateHealthReport, cleanupActivity, cleanupActivity
 import logging
 import uuid
 import os
-# from dotenv import load_dotenv
-
-# load_dotenv()
 
 
 BUCKET_URL = os.getenv('BUCKET_URL')
@@ -206,9 +203,6 @@ def calculate():
     activity_level = data.get("activity_level")
     goal = data.get("goal") 
 
-    # if not all([age, gender, weight, height, activity_level, goal]):
-    #     return jsonify({"error": "Missing required parameters"}), 400
-
     # Perform nutrition calculation with goal
     nutrients = calculate_nutrition(age, gender, weight, height, activity_level, goal, diet, allergies)
     # print("Required nutrients", nutrients)
@@ -229,19 +223,11 @@ def calculate():
     return jsonify(result)
 
 
-
-
 # MongoDB URI
 MONGO_URI = os.getenv('MONGO_URI')
 
 # Initialize MongoDB client
 client = MongoClient(MONGO_URI, server_api=ServerApi('1'))
-
-
-# Health check for Ingress
-# @app.route('/api/healthz', methods=['GET'])
-# def ingressHealthCheck():
-#     return jsonify({"status": "OK"}), 200
 
 
 # Liveness Probe - Checks if the app is running
